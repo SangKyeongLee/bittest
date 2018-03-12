@@ -6,7 +6,7 @@ public class EplRank {
     public static void main(String[] args) {
         java.util.Scanner keyScan = new java.util.Scanner(System.in);
 
-        int count;
+        int count = 0;
         RankGraph[] rankTable = new RankGraph[4];
 
         for(int i = 0; i < rankTable.length; i++ ) {
@@ -28,14 +28,19 @@ public class EplRank {
             rankTable[i].play = rankTable[i].win + rankTable[i].draw + rankTable[i].lose;
             rankTable[i].points = (rankTable[i].win * 3) + rankTable[i].draw;
 
+            if(count == rankTable.length) {
+                break;
+            }
+            
+            System.out.println("계속 입력하시겠습니까?(Y/n)");
             
         }
 
         System.out.printf("2017/2018시즌 EPL 순위표\n");
         System.out.printf("-----------------------------------------------------------------------\n");
         
-        for(int i = 0; i < rankTable.length; i++){
-            System.out.printf("| %2d위 | %20s | %4d경기 | %3d점 | %2d승 | %2d무 | %2d패 |\n", 
+        for(int i = 0; i < count; i++){
+            System.out.printf("| %2d위 | %10s | %2d경기 | %3d점 | %2d승 | %2d무 | %2d패 |\n", 
             rankTable[i].rank, rankTable[i].name, rankTable[i].play, 
             rankTable[i].points, rankTable[i].win, rankTable[i].draw, 
             rankTable[i].lose);
